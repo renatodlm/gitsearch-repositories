@@ -1,0 +1,725 @@
+$primary: #111;
+$black: #000;
+$white: #fff;
+$gray: #8e8e8e;
+
+$lg: 992px;
+
+.gitsearch-button-defaut {
+    background-color: $primary !important;
+    border-color: $primary !important;
+    color: $white !important;
+    padding: 10px 25px;
+    font-size: 24px;
+    word-break: break-all;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    border: 0;
+    outline: none !important;
+}
+
+.gitsearch-container-search {
+    width: 100%;
+    display: flex;
+
+    .gitsearch-form {
+        position: relative;
+        width: 100%;
+        flex-wrap: wrap;
+        display: flex;
+
+        p {
+            flex: 0 0 100%;
+            max-width: 100%;
+            color: $primary;
+        }
+    }
+}
+
+input {
+    &#gitsearch-repositories {
+        margin: 0;
+        flex: 0 0 100%;
+        max-width: calc(100% - 150px);
+        color: $primary;
+        border: 2px solid $primary;
+        outline: none !important;
+        border-radius: 0;
+    }
+
+    &#gitsearch-submit {
+        border-radius: 0;
+        margin: 0;
+        width: 150px;
+        background-color: $primary;
+        color: $white;
+        border: 0;
+    }
+}
+
+.gitsearch-container-search .gitsearch-form ul#gitsearch-suggestions {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding-inline-start: 0;
+    background-color: $white;
+    position: absolute;
+    top: 115px;
+    left: 0px;
+    margin-top: 5px;
+    width: 100%;
+    height: 0px;
+    padding: 0px;
+    box-shadow: 0 0.5rem 1rem rgba($black, 15%);
+    opacity: 0;
+    transition: ease all 0.3s;
+    z-index: 15;
+
+    h4 {
+        word-break: break-all;
+        margin: 0 !important;
+    }
+
+    p {
+        word-break: break-word;
+    }
+
+    #gitsearch-viewmore {
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        text-decoration: none;
+        text-transform: none;
+        width: auto;
+        cursor: pointer;
+        color: $gray;
+        padding-top: 15px;
+        font-size: 14px;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+
+    li {
+        &.gitsearch-li-viewmore {
+            text-align: center;
+        }
+
+        list-style: none;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid;
+        }
+
+        &:not(.gitsearch-li-viewmore) {
+            &:hover,
+            &:focus {
+                background-color: $primary;
+            }
+        }
+
+        a {
+            padding: 5px 10px;
+            display: block;
+            width: 100%;
+            text-decoration: none !important;
+        }
+
+        &:not(.gitsearch-li-viewmore) {
+            &:hover a,
+            &:focus a {
+                color: $white;
+            }
+        }
+
+        &:hover,
+        &:focus {
+            h4 {
+                color: #fff;
+            }
+            p{
+                color: #fff;
+            }
+        }
+    }
+}
+
+@media (max-width: $lg) {
+    .gitsearch-container-search .gitsearch-form ul#gitsearch-suggestions {
+        top: 100px;
+    }
+}
+
+@media (max-width: $lg) {
+    .gitsearch-container-search .gitsearch-form ul#gitsearch-suggestions {
+        h4 {
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 12px;
+        }
+    }
+}
+
+/*RESULTS*/
+
+.gitsearch-results {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: $lg) {
+    .gitsearch-results h4 {
+        font-size: 14px;
+    }
+}
+
+.gitsearch-total-results {
+    margin: 15px 0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+ul.gitsearch-results-list {
+    padding-inline-start: 0;
+    background-color: $white;
+    width: 100%;
+    padding: 0;
+    transition: ease all 0.3s;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    li {
+        list-style: none;
+        display: flex;
+        padding: 10px 5px;
+        transition: 0.3s ease all;
+        position: relative;
+        min-height: 80px;
+        max-height: 150px;
+        margin: 0 !important;
+        .gitsearch-results-img {
+            width: 60px;
+            min-width: 60px;
+            height: 60px;
+            background-size: cover;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-flex;
+            margin: 10px;
+            box-shadow: 0 0.2rem 0.5rem rgba($black, 15%);
+            background-color: $white;
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid;
+        }
+
+        &:not(.gitsearch-li-viewmore) {
+            &:hover,
+            &:focus {
+                background-color: $primary;
+            }
+        }
+
+        a {
+            padding: 5px 10px;
+            display: inline-flex;
+            width: 100%;
+            text-decoration: none !important;
+            word-break: break-all;
+            flex-direction: column;
+        }
+
+        &:not(.gitsearch-li-viewmore) {
+            &:hover a,
+            &:focus a {
+                color: $white;
+                background-color: transparent !important;
+            }
+        }
+
+        &:hover h4,
+        &:focus h4 {
+            color: $white;
+        }
+
+        .gitsearch-language-list {
+            padding: 4px 8px;
+            background-color: $primary;
+            width: fit-content;
+            font-size: 10px;
+            color: $white;
+        }
+
+        &:not(.gitsearch-li-viewmore):hover .gitsearch-language-list {
+            background-color: $white;
+            color: $primary;
+        }
+    }
+}
+
+@media (max-width: $lg) {
+    ul.gitsearch-results-list li .gitsearch-results-img {
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+    }
+}
+
+.gitsearch-description {
+    font-size: 14px;
+    color: $gray;
+    margin-bottom: 15px;
+    overflow: hidden;
+    line-height: 1.2;
+}
+
+@media (max-width: $lg) {
+    .gitsearch-description {
+        font-size: 12px;
+    }
+}
+
+/*PAGINATION*/
+
+ul.gitsearch-pagination {
+    padding-inline-start: 0;
+    margin: 30px auto auto;
+    li {
+        list-style: none;
+        background-color: $white;
+        color: $primary;
+        border: 1px solid $primary;
+        margin: 5px;
+        display: inline-block;
+        transition: 0.3s ease all;
+
+        a {
+            text-decoration: none;
+            padding: 5px 10px;
+            font-size: 14px;
+            display: block;
+            color: $primary;
+            word-break: break-all;
+        }
+
+        &.gitsearch-current-page {
+            background-color: $primary;
+            border-color: $primary;
+            color: $white;
+            padding: 5px 10px;
+            font-size: 14px;
+            word-break: break-all;
+
+            a {
+                font-weight: bold;
+                color: $white;
+            }
+        }
+    }
+}
+
+/* REPO INT */
+
+.gitsearch-current-repo {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $white;
+    padding: 15px;
+    margin-bottom: 30px;
+    position: relative;
+    .gitsearch-current-repo-avatar {
+        flex: 0 0 100%;
+        max-width: 100%;
+        @media (max-width: $lg) {
+            margin-bottom: 15px;
+        }
+    }
+
+    .gitsearch-current-repo-content {
+        flex: 0 0 100%;
+        max-width: calc(100% - 60px);
+        padding-left: 0px;
+    }
+
+    .gitsearch-current-repo-avatar img {
+        width: 100%;
+        height: auto;
+    }
+
+    .gitsearch-current-repo-content {
+        .gitsearch-current-repo-dates {
+            font-size: 14px;
+            font-weight: 500;
+            color: $gray;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            word-break: break-all;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            word-break: break-word;
+        }
+
+        span {
+            margin-bottom: 15px;
+            word-break: break-word;
+        }
+
+        a {
+            background-color: $primary;
+            border-color: $primary;
+            color: $white;
+            padding: 10px 25px;
+            font-size: 24px;
+            word-break: break-all;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            width: fit-content;
+
+            &:hover,
+            &:focus {
+                background-color: $white;
+                border-color: $primary;
+                color: $primary;
+            }
+
+            svg {
+                width: 24px;
+                height: 24px;
+                fill: $white;
+                margin-left: 10px;
+                margin-top: 2px;
+            }
+
+            &:hover svg,
+            &:focus svg {
+                fill: $primary;
+            }
+        }
+    }
+}
+
+@media (min-width: $lg) {
+    .gitsearch-current-repo {
+        .gitsearch-current-repo-avatar {
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+
+        .gitsearch-current-repo-content {
+            flex: 0 0 75%;
+            max-width: calc(75% - 60px);
+            padding-left: 30px;
+        }
+    }
+}
+
+@media (max-width: $lg) {
+    .gitsearch-current-repo .gitsearch-current-repo-content {
+        h1 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (max-width: $lg) {
+    .gitsearch-current-repo .gitsearch-current-repo-content a {
+        padding: 8px 20px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: $lg) {
+    .gitsearch-current-repo .gitsearch-current-repo-content a svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* FAVORITE */
+
+.gitsearch-favorite {
+    display: inline-flex;
+    width: 60px;
+    height: 100%;
+    cursor: pointer;
+
+    .gitsearch-bg {
+        top: 0;
+        right: 0;
+        background-color: $white;
+        width: 60px;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all ease 0.3s;
+        &:hover,
+        &:focus {
+            background-color: #e91e63;
+        }
+
+        &:hover .gitsearch-favorite-selected svg,
+        &:focus .gitsearch-favorite-selected svg,
+        &:hover .gitsearch-favorite-unselected svg,
+        &:focus .gitsearch-favorite-unselected svg {
+            fill: $white;
+        }
+    }
+
+    .gitsearch-favorite-selected {
+        width: 30px;
+        height: 30px;
+        display: none;
+
+        &.selected {
+            display: block;
+        }
+    }
+
+    .gitsearch-favorite-unselected {
+        width: 30px;
+        height: 30px;
+        display: none;
+    }
+
+    .gitsearch-favorite-unselected.selected {
+        display: block;
+        text-align: center;
+    }
+    .gitsearch-favorite-selected svg,
+    .gitsearch-favorite-unselected svg {
+        transition: all ease 0.3s;
+    }
+}
+
+/*
+          FAVORITES LIST
+          */
+
+.gitsearch-favorites {
+    background-color: $white;
+    margin: 60px 0;
+    position: relative;
+}
+
+ul#gitsearch-favorites-content {
+    padding-inline-start: 0;
+    background-color: $white;
+    width: 100%;
+    padding: 0px;
+    transition: ease all 0.3s;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    h4 {
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0 !important;
+    }
+
+    #gitsearch-viewmore {
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        text-decoration: none;
+        text-transform: none;
+        width: auto;
+        cursor: pointer;
+        color: $gray;
+        padding-top: 15px;
+        font-size: 14px;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+
+    li {
+        &:hover,
+        &:focus {
+            h4 {
+                color: $white;
+            }
+        }
+        &.gitsearch-li-viewmore {
+            text-align: center;
+        }
+
+        list-style: none;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid;
+        }
+
+        &:not(.gitsearch-li-viewmore) {
+            &:hover,
+            &:focus {
+                background-color: $primary !important;
+            }
+        }
+
+        a {
+            padding: 5px 10px;
+            display: inline-flex;
+            width: 100%;
+            text-decoration: none !important;
+        }
+
+        &:not(.gitsearch-li-viewmore) {
+            &:hover a,
+            &:focus a {
+                color: $white;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+#gitsearch-alert {
+    content: " ";
+    max-width: 100%;
+    width: 370px;
+    background-color: green;
+    font-size: 14px;
+    position: fixed;
+    bottom: -100%;
+    right: 15px;
+    left: 15px;
+    margin: auto;
+    color: $white;
+    border-radius: 4px;
+    padding: 5px 15px;
+    z-index: 999;
+    justify-content: center;
+    display: flex;
+    box-shadow: 0 0.5rem 1rem rgba($black, 15%);
+    transition: all ease 0.4s;
+}
+
+.gitsearch-container {
+    max-width: 1200px !important;
+    width: 100%;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.gitsearch-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+    justify-content: space-between;
+}
+
+.gitsearch-col-12,
+.gitsearch-col-8,
+.gitsearch-col-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media (min-width: $lg) {
+    .gitsearch-col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .gitsearch-col-8 {
+        flex: 0 0 60%;
+        max-width: 60%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .gitsearch-col-4 {
+        flex: 0 0 33%;
+        max-width: 33%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.gitserach-favorites-list-container {
+    padding: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 15px 0;
+    }
+
+    button {
+        font-size: 14px;
+        margin: 15px 0;
+    }
+}
+
+.gitsearch-badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: $white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: $primary;
+    border-radius: 10px;
+    position: relative;
+    top: -1px;
+}
+
+.gitsearch-btn-remove {
+    display: inline-flex !important;
+    background-color: red !important;
+    width: 40px;
+    height: 40px;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
