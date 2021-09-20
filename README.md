@@ -1,2 +1,2 @@
 # gitsearch-repositories
-teste for devs - mooven
+test for devs - mooven
